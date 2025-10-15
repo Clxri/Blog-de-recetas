@@ -1,37 +1,38 @@
 <?php
 require_once './config.php';
 class modelUsers{
-    private $db;
-    public function __construct() {
-        $this-> db = new PDO('mysql:host='. MYSQL_HOST .';dbname='. MYSQL_DB .';charset=utf8', MYSQL_USER, MYSQL_PASS);
-    }
-}
+   private $db;
+   public function __construct() {
+    $this-> db = new PDO('mysql:host='. MYSQL_HOST .';dbname='. MYSQL_DB .';charset=utf8', MYSQL_USER, MYSQL_PASS);
+   }
 
-public function showUsers(){
+
+   public function showUsers(){
     $query = $this->db->prepare('SELECT * FROM users');
     $query->execute(); 
     $users = $query->fetchAll(PDO::FETCH_OBJ);
     return $users;
-} 
-
-public function showUsersById($id){
-    $query = $this->db->prepare('SELECT * FROM command WHERE id_users = ?');
+   }
+    
+   public function showUserById($id){
+    $query = $this->db->prepare('SELECT * FROM users WHERE id_user = ?');
     $query->execute([$id]);
-    $recipes = $query->fetch(PDO::FETCH_OBJ);
-    return $recipes;
-}
+    $user = $query->fetch(PDO::FETCH_OBJ); // Retorna el usuario
+    return $user; 
+   }
 
-public function deleteUsers($id){
-    $query = $this->db->prepare('DELETE FROM users WHERE id_users= ?');
-    $query->execute([]); 
-} 
+   public function deleteUser($id){
+    $query = $this->db->prepare('DELETE FROM users WHERE id_user= ?');
+    $query->execute([$id]); 
+   } 
 
-public function createUsers($name, $email, $description, $age){
+   public function createUser($name, $email, $description, $age){
     $query = $this->db->prepare('INSERT INTO users (name, email, description, age) VALUES (?, ?, ?, ?)');
     $query->execute([$name, $email, $description, $age]); 
-}
+   }
 
-public function updateUsers($id_users, $name, $email, $description, $age){
-    $query = $this->db->prepare('UPDATE users SET name = ?, email = ?, description = ?, age = ? WHERE id_users = ?');
-    $query->execute([$id_users, $name, $email, $description, $age]); 
+   public function updateUser($id_user, $name, $email, $description, $age){
+    $query = $this->db->prepare('UPDATE users SET name = ?, email = ?, description = ?, age = ? WHERE id_user = ?');
+    $query->execute([$id_user, $name, $email, $description, $age]); 
+   }
 }
