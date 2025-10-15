@@ -11,7 +11,7 @@ class modelRecipes {
     public function showRecipes(){
 
         $query = $this->db->prepare('SELECT * FROM recipes');
-        $query = execute();
+        $query->execute();
         $recipes = $query->fetchAll(PDO::FETCH_OBJ);
         return $recipes;
     }
@@ -27,8 +27,8 @@ class modelRecipes {
 
     public function deleteRecipe($id){
 
-        $query = $this->db->prepare('DELETE FROM recipes WHERE id_user'); //chequear esto
-        $query = execute();
+        $query = $this->db->prepare('DELETE FROM recipes WHERE id_user = ? '); //chequear esto
+        $query->execute([$id]);
     }
 
     public function createRecipe($title,$content,$time,$date,$id_user){
@@ -41,7 +41,7 @@ class modelRecipes {
     public function updateRecipe($id_recipe,$title,$content,$time,$date,$id_user){
 
         $query = $this->db->prepare('UPDATE recipes SET title = ?, content = ?, time = ?, date = ?, id_user = ? WHERE id_recipe = ?');
-        $query->execute([$id_recipe,$title,$content,$time,$date,$id_user]);
+        $query->execute([$title,$content,$time,$date,$id_user,$id_recipe]);
     }
 
 
