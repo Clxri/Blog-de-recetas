@@ -43,6 +43,31 @@ switch ($params[0]) {
         //form
         break;
 
+    case "showUsers": //muestro todos
+        $controller = new controllerUsers; 
+        $controller->showUsers(); 
+        break;
+
+    case "showUserById": 
+        $controller = new controllerUsers;
+        $controller->showUserById($params[1]);
+        break;
+
+    case "deleteUser":
+        $controller = new controllerUsers;
+        $controller->deleteUser($params[1]);
+        break;
+    
+    case "updateUser":
+        $controller = new controllerUsers;
+        $controller->updateUser($params[1]);
+        break;
+
+    case "createUser":
+        $controller = new controllerUsers;
+        $controller->createUser();
+        break;
+
     default: //en caso de que no sea ninguna muestro error
         echo ("Error");
         break;
