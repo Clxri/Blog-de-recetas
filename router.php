@@ -40,31 +40,32 @@ switch ($params[0]) {
         break;
 
     case "createRecipe":
-        //form
+        $controller = new controllerRecipes();
+        $controller->createRecipe();
         break;
 
     case "showUsers": //muestro todos
-        $controller = new controllerUsers; 
+        $controller = new controllerUsers (); 
         $controller->showUsers(); 
         break;
 
     case "showUserById": 
-        $controller = new controllerUsers;
+        $controller = new controllerUsers();
         $controller->showUserById($params[1]);
         break;
 
     case "deleteUser":
-        $controller = new controllerUsers;
+        $controller = new controllerUsers();
         $controller->deleteUser($params[1]);
         break;
     
     case "updateUser":
-        $controller = new controllerUsers;
+        $controller = new controllerUsers();
         $controller->updateUser($params[1]);
         break;
 
     case "createUser":
-        $controller = new controllerUsers;
+        $controller = new controllerUsers();
         $controller->createUser();
         break;
 
