@@ -43,8 +43,9 @@ switch ($params[0]) {
         $controller = new controllerRecipes();
         $controller->createRecipe();
         break;
-
-    case "showUsers": //muestro todos
+    
+    //Muestra todos
+    case "showUsers": 
         $controller = new controllerUsers (); 
         $controller->showUsers(); 
         break;
@@ -58,16 +59,33 @@ switch ($params[0]) {
         $controller = new controllerUsers();
         $controller->deleteUser($params[1]);
         break;
+
+    // Mostrar formulario para editar
+    case "editUser":
+      $controller = new controllerUsers();
+      $controller->editUserForm($params[1]);
+      break;
     
+    // Guardar cambios de usuario 
     case "updateUser":
         $controller = new controllerUsers();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $controller->updateUser($params[1]);
+    } else {
+        $controller->editUserForm($params[1]);
         break;
-
+        
+    }
     case "createUser":
         $controller = new controllerUsers();
         $controller->createUser();
         break;
+
+    case "addUser":
+        $controller = new controllerUsers();
+        $controller->addUserForm();
+        break;
+
 
     default: //en caso de que no sea ninguna muestro error
         echo ("Error");

@@ -1,0 +1,31 @@
+<?php require 'templateHeader.phtml'; ?>
+
+<div class="container my-5">
+  <h2 class="text-center mb-4">Detalles del Usuario</h2>
+
+  <?php if (!empty($user)): ?>
+    <div class="card shadow-sm border-0 mx-auto" style="max-width: 500px;">
+      <div class="card-body">
+        <h4 class="card-title text-primary fw-bold">
+          <?php echo htmlspecialchars($user->name); ?>
+        </h4>
+        <p class="card-text">
+          <strong>Email:</strong> <?php echo htmlspecialchars($user->email); ?><br>
+          <strong>Descripción:</strong> <?php echo htmlspecialchars($user->description ?? 'Sin descripción'); ?><br>
+          <strong>Edad:</strong> <?php echo htmlspecialchars($user->age); ?>
+        </p>
+      </div>
+      <div class="card-footer d-flex justify-content-between">
+        <a href="<?php echo BASE_URL; ?>showUsers" class="btn btn-secondary">Volver al listado</a>
+        <a href="<?= BASE_URL ?>editUser/<?= $user->id_user ?>" class="btn btn-warning">Editar</a>
+        <a href="<?php echo BASE_URL; ?>deleteUser/<?php echo $user->id_user; ?>" class="btn btn-danger">Eliminar</a>
+      </div>
+    </div>
+  <?php else: ?>
+    <div class="alert alert-warning text-center mt-5">
+      No se encontró el usuario.
+    </div>
+  <?php endif; ?>
+</div>
+
+<?php require 'templateFooter.phtml'; ?>
