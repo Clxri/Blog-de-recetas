@@ -6,7 +6,7 @@ class viewUsers {
         require './templates/templateUsers.phtml';
     }
 
-    public function displayUserDetail($user){
+    public function displayUserDetail($user, $recipes = []){
         require './templates/templateUserDetail.phtml';
     }
     

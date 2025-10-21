@@ -73,9 +73,9 @@ switch ($params[0]) {
         $controller->updateUser($params[1]);
     } else {
         $controller->editUserForm($params[1]);
-        break;
-        
     }
+        break;
+    
     case "createUser":
         $controller = new controllerUsers();
         $controller->createUser();

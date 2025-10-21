@@ -40,4 +40,12 @@ class modelUsers{
     $query->execute([$name, $email, $description, $age, $id_user]);
    }
 
+   public function getRecipeIdsByUser($userId) {
+    $query = $this->db->prepare("SELECT id_recipe FROM recipes WHERE id_user = ?");
+    $query->execute([$userId]);
+    return $query->fetchAll(PDO::FETCH_COLUMN); // solo los IDs
+   }
+
+
+
 }

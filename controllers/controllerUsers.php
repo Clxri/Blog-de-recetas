@@ -1,13 +1,18 @@
 <?php
 require_once './models/modelUsers.php';
 require_once './views/viewUsers.php';
+require_once './models/modelRecipes.php';
+
 
 class controllerUsers {
     private $model;
     private $view;
+    private $modelRecipe;
+
 
     public function __construct() {
         $this->model = new modelUsers();
+        $this->modelRecipe = new modelRecipes();
         $this->view = new viewUsers();
     }
 
@@ -19,13 +24,23 @@ class controllerUsers {
 
     // Mostrar un usuario por ID
     public function showUserById($id) {
-        $user = $this->model->showUserById($id); 
-        if ($user) {
-            $this->view->displayUserDetail($user);
-        } else {
-            $this->view->showError("Usuario con ID no encontrado", 404); 
+     $user = $this->model->showUserById($id);
+
+     if ($user) {
+        $recipes = [];
+        $recipeIds = $this->model->getRecipeIdsByUser($id);
+
+        foreach ($recipeIds as $recipeId) {
+            $recipeData = $this->modelRecipe->showRecipeById($recipeId);
+            $recipes = array_merge($recipes, $recipeData);
         }
+
+        $this->view->displayUserDetail($user, $recipes);
+     } else {
+        $this->view->showError("Usuario con ID no encontrado", 404);
+     }
     }
+
 
     // Crear un nuevo usuario
     public function createUser() {
