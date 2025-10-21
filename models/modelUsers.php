@@ -22,6 +22,10 @@ class modelUsers{
    }
 
    public function deleteUser($id){
+    // Primero eliminar las recetas asociadas al usuario
+    $query = $this->db->prepare('DELETE FROM recipes WHERE id_user = ?');
+    $query->execute([$id]);
+    // Después elimina el usuario
     $query = $this->db->prepare('DELETE FROM users WHERE id_user= ?');
     $query->execute([$id]); 
    } 
@@ -33,6 +37,7 @@ class modelUsers{
 
    public function updateUser($id_user, $name, $email, $description, $age){
     $query = $this->db->prepare('UPDATE users SET name = ?, email = ?, description = ?, age = ? WHERE id_user = ?');
-    $query->execute([$id_user, $name, $email, $description, $age]); 
+    $query->execute([$name, $email, $description, $age, $id_user]);
    }
+
 }

@@ -1,16 +1,26 @@
 <?php
 
 class viewUsers {
-
-    // Muestra el listado completo de usuarios
-    public function displayUsers($users) {
+    public function displayUsers($users){
+        $count = count($users);
         require './templates/templateUsers.phtml';
     }
 
-    // Muestra el detalle de un usuario individual
-    public function displayUserDetail($user) {
+    public function displayUserDetail($user){
         require './templates/templateUserDetail.phtml';
     }
+    
+    public function addUserForm($user = null, $error = '') {
+     require './templates/templateFormUser.phtml'; 
+    }
+
+    public function showError($message, $code = null) {
+    echo "<div class='alert alert-danger' role='alert'>
+        <h4>Error</h4>
+        <p>$message</p>
+        </div>";
+    }
+
 
 }
 ?>
