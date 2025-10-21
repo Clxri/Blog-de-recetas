@@ -1,13 +1,16 @@
 <?php
 require_once './views/viewRecipes.php'; 
+require_once './views/viewAuth.php';
 require_once './models/modelRecipes.php';
 
 class controllerRecipes{
     private $view;
     private $model;
+    private $viewAuth;
     
     public function __construct() {
         $this->view = new viewRecipes();
+        $this->viewAuth = new viewAuth();
         $this->model = new modelRecipes();
     }
 
@@ -23,7 +26,7 @@ class controllerRecipes{
         if ($recipe) {
             $this->view->showRecipes($recipe);
         } else {
-            $this->view->showError("Receta con ID no encontrado", 404); 
+            $this->viewAuth->showError("Receta con ID no encontrado", 404); 
         }
     }
 
@@ -41,7 +44,7 @@ class controllerRecipes{
         $this->model->updateRecipe($id, $title, $content, $time, $date);
             header("Location: " . BASE_URL . "showRecipes");
         } else {
-            $this->view->showError("Faltan completar campos");
+            $this->viewAuth->showError("Faltan completar campos");
         }
     }
 
@@ -55,7 +58,7 @@ class controllerRecipes{
             $this->model->createRecipe($title, $content, $time, $date);
             header("Location: " . BASE_URL . "showRecipes");
         } else {
-            $this->view->showError("Faltan completar datos del usuario.");
+            $this->viewAuth->showError("Faltan completar datos del usuario.");
         }
     }
 

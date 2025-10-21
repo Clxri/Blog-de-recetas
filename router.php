@@ -24,7 +24,7 @@ switch ($params[0]) {
         $controller->showRecipes(); 
         break;
 
-    case "showRecipeById": //muestro receta por id
+    case "showRecipeById": 
         $controller = new controllerRecipes();
         $controller->showRecipeById($params[1]);
         break;
@@ -69,8 +69,9 @@ switch ($params[0]) {
         $controller->createUser();
         break;
 
-    default: //en caso de que no sea ninguna muestro error
-        echo ("Error");
+    default: 
+        $controller = new controllerAuth();
+        $controller->showError();
         break;
 }
     

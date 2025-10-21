@@ -26,9 +26,10 @@ class modelRecipes {
     }
 
     public function deleteRecipe($id){
+        $query = $this->db->prepare('DELETE FROM recipes WHERE id_recipe = ? '); 
+        $query->execute([$id]); 
 
-        $query = $this->db->prepare('DELETE FROM recipes WHERE id_user = ? '); //chequear esto
-        $query->execute([$id]);
+        $recipes = $query->fetchAll(PDO::FETCH_OBJ);
     }
 
     public function createRecipe($title,$content,$time,$date,$id_user){
