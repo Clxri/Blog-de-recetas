@@ -21,10 +21,6 @@
 
                 <label for="age">Edad:</label>
                 <input type="number" class="form-control" id="age" name="age" value="<?= isset($user->age) ? $user->age : ''; ?>" required>
-
-                <!-- Foto obligatoria si es para agregar, para editar opcional -->
-                <label for="image">Adjunte foto para identificación:</label>
-                <input type="file" class="form-control" id="image" name="image" <?= isset($user->id_user) ? '' : 'required'; ?>>
             </div>
             
             <!-- Botón dinámico para agregar o editar -->

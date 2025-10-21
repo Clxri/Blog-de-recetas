@@ -6,15 +6,6 @@
   <?php if (!empty($user)): ?>
     <div class="card shadow-sm border-0 mx-auto" style="max-width: 500px;">
       <div class="card-body text-center">
-        <?php if (!empty($user->photo)): ?>
-          <img src="<?= htmlspecialchars($user->photo) ?>" 
-               alt="Foto de <?= htmlspecialchars($user->name) ?>" 
-               class="rounded-circle mb-3" width="120" height="120">
-        <?php else: ?>
-          <img src="https://via.placeholder.com/120" 
-               alt="Sin foto" class="rounded-circle mb-3">
-        <?php endif; ?>
-
         <h4 class="card-title text-primary fw-bold"><?= htmlspecialchars($user->name) ?></h4>
         <p class="card-text"><strong>Email:</strong> <?= htmlspecialchars($user->email) ?></p>
         <p class="card-text"><strong>Descripción:</strong> <?= htmlspecialchars($user->description) ?></p>

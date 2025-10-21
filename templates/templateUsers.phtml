@@ -2,20 +2,18 @@
 
 <div class="container my-5">
   <h2 class="text-center mb-4">Usuarios (<?php echo count($users); ?>)</h2>
-  <a href="<?php echo BASE_URL; ?>addUser">
-    <button type="button" class="btn btn-light">Añadir usuario</button>
-</a>
 
+  <div class="d-flex justify-content-center mt-4 mb-4">
+    <a href="<?php echo BASE_URL; ?>addUser">
+      <button type="button" class="btn btn-danger">Añadir usuario</button>
+    </a>
+  </div>
 
   <?php if (!empty($users)): ?>
     <div class="row row-cols-1 row-cols-md-3">
       <?php foreach ($users as $user): ?>
         <div class="col">
-          <div class="card shadow-sm border-0" style="width: 18rem; margin: 0 auto;">
-            <!-- Imagen -->
-            <img src="https://placehold.co/400x250?text=Usuario" 
-                 class="card-img-top" 
-                 alt="Imagen de <?php echo $user->name; ?>">
+          <div class="card shadow-sm border-0" >
 
             <div class="card-body">
               <h5 class="card-title text-primary fw-bold">

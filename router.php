@@ -94,10 +94,16 @@ switch ($params[0]) {
         $controller = new controllerUsers();
         $controller->addUserForm();
         break;
-        
-   // case "logOut":
-   //     $controller = new controllerAuth();
-    //    $controller->logOut();
+    
+    case "showlogIn":
+        $controller = new controllerAuth();
+        $controller->showLogIn();
+        break;
+
+    case "logOut":
+       $controller = new controllerAuth();
+       $controller->logOut();
+       break;
 
     default: 
         $controller = new controllerAuth();

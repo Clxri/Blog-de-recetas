@@ -17,6 +17,10 @@ class controllerAuth{
         $this->view->showError();
     }
 
+    public function showLogIn(){
+        $this->view->showLogIn();
+    }
+
    // public function showLogOut() {
    //     session_start();
    //     session_destroy();

@@ -18,11 +18,21 @@
        
         <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-link active" aria-current="page" href="./home">Inicio</a>
-            <a class="nav-link" href="./showUsers">Usuarios</a>
-            <a class="nav-link" href="./showRecipes">Recetas</a>
+            <a class="nav-link active" aria-current="page" href="<?= BASE_URL ?>home">Inicio</a>
+            <a class="nav-link" href="<?= BASE_URL ?>./showUsers">Usuarios</a>
+            <a class="nav-link" href="<?= BASE_URL ?>./showRecipes">Recetas</a>
           </div>
         </div>
+
+        <!----- boton de entrar------->
+          <div class="navbar-nav ms-auto "> 
+            <a class="nav-link" href="<?= BASE_URL ?>./showlogIn">Login</a> 
+          </div>
+
+        <!----boton de salir--->
+          <div class="navbar-nav ms-auto "> 
+            <a class="nav-link" href="./logOut">Log out</a>  
+          </div>
       </div>
     </nav>
 

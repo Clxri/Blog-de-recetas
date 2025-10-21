@@ -8,5 +8,9 @@ class viewAuth {
     public function showError(){
         require './templates/templateError.phtml';
     }
+
+    public function showLogIn(){
+        require './templates/templateLogIn.phtml';
+    }
 }
 ?>
