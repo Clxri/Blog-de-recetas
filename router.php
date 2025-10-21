@@ -36,15 +36,24 @@ switch ($params[0]) {
     
     case "updateRecipe":
         $controller = new controllerRecipes();
-        $controller->updateRecipe($params[1]);
+        $controller->showRecipeForm($params[1]);
         break;
 
-    case "createRecipe":
+    case "addRecipe":
         $controller = new controllerRecipes();
-        $controller->createRecipe();
+        $controller->showRecipeForm();
         break;
     
-    //Muestra todos
+    case "modifyRecipe":
+        $controller = new controllerRecipes();
+        $controller->modifyRecipe($params[1]);
+        break;
+
+    case "newRecipe":
+        $controller = new controllerRecipes();
+        $controller->newRecipe();
+    
+    //                usuarios
     case "showUsers": 
         $controller = new controllerUsers (); 
         $controller->showUsers(); 
@@ -86,6 +95,10 @@ switch ($params[0]) {
         $controller->addUserForm();
         break;
         
+   // case "logOut":
+   //     $controller = new controllerAuth();
+    //    $controller->logOut();
+
     default: 
         $controller = new controllerAuth();
         $controller->showError();

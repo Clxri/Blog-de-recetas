@@ -1,29 +1,39 @@
 <?php require 'templateHeader.phtml'; ?>
 
 <div class="container my-5">
-  <h2 class="text-center mb-4">Detalles del Usuario</h2>
+  <h2 class="text-center mb-4">Detalles de la Receta</h2>
 
-  <?php if (!empty($user)): ?>
-    <div class="card shadow-sm border-0 mx-auto" style="max-width: 500px;">
+  <?php if (!empty($recipe)): ?>
+    <div class="card shadow-sm border-0 mx-auto" style="max-width: 600px;">
       <div class="card-body">
-        <h4 class="card-title text-primary fw-bold">
-          <?php echo htmlspecialchars($user->name); ?>
+        <h4 class="card-title text-primary fw-bold text-center mb-3">
+          <?= htmlspecialchars($recipe->title) ?>
         </h4>
+
         <p class="card-text">
-          <strong>Email:</strong> <?php echo htmlspecialchars($user->email); ?><br>
-          <strong>Descripción:</strong> <?php echo htmlspecialchars($user->description ?? 'Sin descripción'); ?><br>
-          <strong>Edad:</strong> <?php echo htmlspecialchars($user->age); ?>
+          <strong>Contenido:</strong><br>
+          <?= nl2br(htmlspecialchars($recipe->content)) ?>
+        </p>
+
+        <p class="card-text mt-3">
+          <strong>Tiempo estimado:</strong> <?= htmlspecialchars($recipe->time) ?> minutos<br>
+          <strong>Fecha de creación:</strong> <?= htmlspecialchars($recipe->date) ?><br>
+          <strong>Autor:</strong>
+          <a href="<?= BASE_URL ?>showUserById/<?= $recipe->id_user ?>" class="text-decoration-none">
+            <?= htmlspecialchars($recipe->user_name) ?>
+          </a>
         </p>
       </div>
+
       <div class="card-footer d-flex justify-content-between">
-        <a href="<?php echo BASE_URL; ?>showUsers" class="btn btn-secondary">Volver al listado</a>
-        <a href="<?= BASE_URL ?>editUser/<?= $user->id_user ?>" class="btn btn-warning">Editar</a>
-        <a href="<?php echo BASE_URL; ?>deleteUser/<?php echo $user->id_user; ?>" class="btn btn-danger">Eliminar</a>
+        <a href="<?= BASE_URL ?>showRecipes" class="btn btn-secondary">Volver al listado</a>
+        <a href="<?= BASE_URL ?>updateRecipe/<?= $recipe->id_recipe ?>" class="btn btn-warning">Editar</a>
+        <a href="<?= BASE_URL ?>deleteRecipe/<?= $recipe->id_recipe ?>" class="btn btn-danger">Eliminar</a>
       </div>
     </div>
   <?php else: ?>
     <div class="alert alert-warning text-center mt-5">
-      No se encontró el usuario.
+      No se encontró la receta solicitada.
     </div>
   <?php endif; ?>
 </div>

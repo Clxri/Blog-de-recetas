@@ -17,11 +17,10 @@ class modelRecipes {
     }
 
      public function showRecipeById($id){
-        //mostrar receta por id usuario?
         $query = $this->db->prepare('SELECT * FROM recipes WHERE id_recipe = ? ORDER BY id_recipe ASC');
         $query->execute([$id]);
 
-        $recipes = $query->fetchAll(PDO::FETCH_OBJ);
+        $recipes = $query->fetch(PDO::FETCH_OBJ);
         return $recipes;
     }
 
@@ -32,18 +31,32 @@ class modelRecipes {
         $recipes = $query->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function createRecipe($title,$content,$time,$date,$id_user){
-
-        $query = $this->db->prepare('INSERT INTO recipes(title, content, time, date, id_user) VALUES (?,?,?,?,?)');
-        $query->execute([$title, $content, $time, $date, $id_user]);
-        // return $this->db->lastInsertId() por las dudas, y chequear opcionales! tiene que tener 
+    public function newRecipe($title,$content,$time,$date,$id_user,$img){
+        $pathImg = $this->uploadImage($img);
+        $query = $this->db->prepare('INSERT INTO recipes(title, content, time, date, id_user, img) VALUES (?,?,?,?,?,?)');
+        $query->execute([$title, $content, $time, $date, $id_user,$pathImg]);
+        return $this->db->lastInsertId();  
     }
 
-    public function updateRecipe($id_recipe,$title,$content,$time,$date,$id_user){
+    private function uploadImage($img){
+        $filePath = 'img/' .  uniqid("", true) . "." 
+        . strtolower(pathinfo($img['name'], PATHINFO_EXTENSION));
+        move_uploaded_file($img["tmp_name"], $filePath);
+        return $filePath; // Devuelve la ruta que se puede guardar en la DB
+    }
 
+
+    public function modifyRecipe($id_recipe,$title,$content,$time,$date,$id_user,$img = null){
+         if($img && $img['tmp_name'] != ''){
+            $pathImg = $this->uploadImage($img);
+            $query = $this->db->prepare('UPDATE recipes SET title = ?, content = ?, time = ?, date = ?, id_user = ?, img = ? WHERE id_recipe = ?');
+            $query->execute([$title, $content, $time, $date, $id_user, $pathImg, $id_recipe]);
+        } else {
+        // si no hay tal img que se actualice lo demás
         $query = $this->db->prepare('UPDATE recipes SET title = ?, content = ?, time = ?, date = ?, id_user = ? WHERE id_recipe = ?');
-        $query->execute([$title,$content,$time,$date,$id_user,$id_recipe]);
+        $query->execute([$title, $content, $time, $date, $id_user, $id_recipe]);
     }
+}
 
 
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 17, 2025 at 05:41 PM
+-- Generation Time: Oct 21, 2025 at 04:41 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -45,7 +45,8 @@ CREATE TABLE `recipes` (
   `content` varchar(250) NOT NULL,
   `time` int(11) NOT NULL,
   `date` date NOT NULL,
-  `id_user` int(11) NOT NULL
+  `id_user` int(11) NOT NULL,
+  `img` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 -- --------------------------------------------------------
@@ -59,8 +60,17 @@ CREATE TABLE `users` (
   `name` varchar(150) NOT NULL,
   `email` varchar(50) NOT NULL,
   `description` varchar(250) DEFAULT NULL,
-  `age` date NOT NULL
+  `age` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id_user`, `name`, `email`, `description`, `age`) VALUES
+(4, 'juan', 'juan@gmail.com', 'hhhhhhhhh', 40),
+(7, 'Clara', 'drtutu@gmail.com', 'hola', 21),
+(8, 'ana', 'ana@gmai.com', 'dskjhsj', 48);
 
 --
 -- Indexes for dumped tables
@@ -94,13 +104,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `recipes`
 --
 ALTER TABLE `recipes`
-  MODIFY `id_recipe` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_recipe` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables

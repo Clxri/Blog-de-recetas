@@ -1,0 +1,40 @@
+<?php require 'templateHeader.phtml'; ?>
+
+<div class="container my-5">
+  <h2 class="text-center mb-4">Detalles de la Receta</h2>
+
+  <?php if (!empty($recipe)): ?>
+    <div class="card shadow-sm border-0 mx-auto" style="max-width: 600px;">
+      <div class="card-body">
+        <h4 class="card-title text-primary fw-bold text-center mb-3">
+          <?= htmlspecialchars($recipe->title) ?>
+        </h4>
+
+        <p class="card-text">
+          <strong>Contenido:</strong><br>
+          <?= nl2br(htmlspecialchars($recipe->content)) ?>
+        </p>
+
+        <p class="card-text mt-3">
+          <strong>Tiempo estimado:</strong> <?= htmlspecialchars($recipe->time) ?> minutos<br>
+          <strong>Fecha de creación:</strong> <?= htmlspecialchars($recipe->date) ?><br>
+          <strong>Autor:</strong>
+          <?= htmlspecialchars($user->name) ?>
+          </a>
+        </p>
+      </div>
+
+      <div class="card-footer d-flex justify-content-between">
+        <a href="<?= BASE_URL ?>showRecipes" class="btn btn-secondary">Volver al listado</a>
+        <a href="<?= BASE_URL ?>updateRecipe/<?= $recipe->id_recipe ?>" class="btn btn-warning">Editar</a>
+        <a href="<?= BASE_URL ?>deleteRecipe/<?= $recipe->id_recipe ?>" class="btn btn-danger">Eliminar</a>
+      </div>
+    </div>
+  <?php else: ?>
+    <div class="alert alert-warning text-center mt-5">
+      No se encontró la receta solicitada.
+    </div>
+  <?php endif; ?>
+</div>
+
+<?php require 'templateFooter.phtml'; ?>
