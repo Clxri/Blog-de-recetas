@@ -1,2 +1,21 @@
-<?php
-echo 'Error!!!!!'
+
+<?php require 'templateHeader.phtml';
+?>
+
+<body class="bg-dark text-light d-flex flex-column min-vh-100">
+
+  <main class="flex-grow-1 d-flex align-items-center justify-content-center">
+    <div class="text-center">
+      <h1 class="display-1 fw-bold text-danger">404</h1>
+      <h2 class="mb-3">¡Ups! Página no encontrada</h2>
+      <p class="lead mb-4">
+        Parece que la página que buscas no existe o fue movida.  
+        Volvé al inicio para seguir explorando nuestras recetas.
+      </p>
+      <a href="../home" class="btn btn-outline-light px-4"> Volver al inicio</a>
+    </div>
+  </main>
+
+  
+
+<?php require 'templateFooter.phtml'?> 

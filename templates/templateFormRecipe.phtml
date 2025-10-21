@@ -1,0 +1,47 @@
+<?php require './templates/templateHeader.phtml'; ?>
+
+<div class="d-flex justify-content-center align-items-center my-4">
+    <div class="p-4 border rounded">
+        <form action="<?= isset($recipe->id_recipe) ? BASE_URL . 'modifyRecipe/' . $recipe->id_recipe : BASE_URL . 'newRecipe' ?>" method="POST" enctype="multipart/form-data">
+
+
+            <div class="form-group">
+                <label for="title">Título</label>
+                <input type="text" class="form-control" id="title" name="title" 
+                       value="<?php echo isset($recipe->title) ? $recipe->title : ''; ?>" required>
+
+                <label for="content">Contenido / Ingredientes</label>
+                <textarea class="form-control" id="content" name="content" rows="4" required><?php 
+                    echo isset($recipe->content) ? $recipe->content : ''; ?></textarea>
+
+                <label for="time">Tiempo estimado (minutos)</label>
+                <input type="number" class="form-control" id="time" name="time" 
+                       value="<?php echo isset($recipe->time) ? $recipe->time : ''; ?>" required>
+
+                <label for="date">Fecha</label>
+                <input type="date" class="form-control" id="date" name="date" 
+                       value="<?php echo isset($recipe->date) ? $recipe->date : date('Y-m-d'); ?>" required>
+
+                <label for="image">Foto</label>
+                <input type="file" class="form-control" id="imageToUpload" name="input_name">
+
+                <label for="id_user">Usuario</label>
+                <select class="form-control" id="id_user" name="id_user" required>
+                    <?php foreach ($users as $user): ?>
+                        <option value="<?= $user->id_user ?>"><?= $user->name ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-warning">
+              <?= isset($recipe->id_recipe) ? 'Actualizar receta' : 'Añadir Receta'; ?> 
+            </button>
+        </form>
+
+        <div>
+            <a href="../showRecipes"><button type="button" class="btn btn-warning mt-2">Volver</button></a>
+        </div>
+    </div>
+</div>
+
+<?php require './templates/templateFooter.phtml'; ?>

@@ -11,9 +11,9 @@ class controllerUsers {
 
 
     public function __construct() {
-        $this->model = new modelUsers();
-        $this->modelRecipe = new modelRecipes();
-        $this->view = new viewUsers();
+      $this->model = new modelUsers();
+      $this->modelRecipe = new modelRecipes();
+      $this->view = new viewUsers();
     }
 
     // Mostrar todos los usuarios
@@ -26,19 +26,21 @@ class controllerUsers {
     public function showUserById($id) {
      $user = $this->model->showUserById($id);
 
-     if ($user) {
+      if ($user) {
         $recipes = [];
         $recipeIds = $this->model->getRecipeIdsByUser($id);
 
         foreach ($recipeIds as $recipeId) {
-            $recipeData = $this->modelRecipe->showRecipeById($recipeId);
-            $recipes = array_merge($recipes, $recipeData);
+          $recipeData = $this->modelRecipe->showRecipeById($recipeId);
+          if ($recipeData) {
+            $recipes[] = $recipeData; // agregamos cada objeto al array
+          }
         }
 
         $this->view->displayUserDetail($user, $recipes);
-     } else {
+       } else {
         $this->view->showError("Usuario con ID no encontrado", 404);
-     }
+      }
     }
 
 

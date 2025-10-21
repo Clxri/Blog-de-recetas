@@ -16,4 +16,10 @@ class controllerAuth{
     public function showError(){
         $this->view->showError();
     }
+
+   // public function showLogOut() {
+   //     session_start();
+   //     session_destroy();
+   //     header("Location: " . BASE_URL. 'home');
+   // }
 }

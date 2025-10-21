@@ -45,7 +45,8 @@ CREATE TABLE `recipes` (
   `content` varchar(250) NOT NULL,
   `time` int(11) NOT NULL,
   `date` date NOT NULL,
-  `id_user` int(11) NOT NULL
+  `id_user` int(11) NOT NULL,
+  `img` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 -- --------------------------------------------------------

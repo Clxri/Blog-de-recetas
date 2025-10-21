@@ -1,28 +1,66 @@
 <?php require 'templateHeader.phtml'; ?>
 
-<div class="container">
-    <div class="text-center">
-        
-       <!---- <img src="image/logo.png" class="rounded" alt="logo TEDEXTER" height="75"> -->
+<main class="flex-grow-1">
 
+  <section class="bg-danger text-light text-center py-5">
+    <div class="container">
+      <h1 class="display-3 fw-bold mb-3">Cociná con pasión 🍲</h1>
+      <p class="lead mb-4">Descubrí sabores únicos, recetas fáciles y la inspiración para tu próxima comida.</p>
+      <a href="showRecipes" class="btn btn-light btn-lg px-4">Explorar recetas</a>
     </div>
-    <div  class="row">
-        <div class="col-12">
-            <h1 class="text-center">Bienvenidos a ReceBlog!</h1>
+  </section>
 
+  <section class="container py-5">
+    <h2 class="text-center mb-4">¡Tenemos muchas opciones!</h2>
+    <div class="row g-4 text-center">
+      <div class="col-md-3">
+        <div class="p-4 border rounded shadow-sm h-100">
+          <div class="fs-1 mb-2">🍝</div>
+          <h5>Pastas</h5>
+          <p class="text-muted">Opciones italianas</p>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <p class="text-center">Aquí podrás encontrar una gran variedad de recetas para todos los gustos.</p>
+      </div>
+      <div class="col-md-3">
+        <div class="p-4 border rounded shadow-sm h-100">
+          <div class="fs-1 mb-2">🥩</div>
+          <h5>Carnes</h5>
+          <p class="text-muted">Opciones clásicas</p>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <p class="text-center">¡Seguro que encontras lo que buscas!</p>
+      </div>
+      <div class="col-md-3">
+        <div class="p-4 border rounded shadow-sm h-100">
+          <div class="fs-1 mb-2">🥗</div>
+          <h5>Ensaladas</h5>
+          <p class="text-muted">Opciones veggies</p>
         </div>
+      </div>
+      <div class="col-md-3">
+        <div class="p-4 border rounded shadow-sm h-100">
+          <div class="fs-1 mb-2">🍰</div>
+          <h5>Postres</h5>
+          <p class="text-muted">Opciones dulces</p>
+        </div>
+      </div>
     </div>
-</div>
+  </section>
+
+
+  <section class="py-5 text-center bg-danger text-light">
+    <div class="container">
+      <blockquote class="blockquote">
+        <p class="mb-4 fs-4 fst-italic">“Cocinar es transformar lo simple en extraordinario.”</p>
+        <footer class="blockquote-footer text-light">ReceBlog</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  
+  <section class="container py-5 text-center">
+    <h2 class="mb-3">¿Tenés una receta?</h2>
+    <p class="lead mb-4">Crea tu usuario y ayudá a otros a descubrir nuevos sabores.</p>
+    <a href="addUser/" class="btn btn-danger btn-lg">Crea usuario</a>
+  </section>
+</main>
 
     <?php require 'templateFooter.phtml'; ?> 
     
