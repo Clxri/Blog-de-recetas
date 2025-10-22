@@ -61,7 +61,7 @@ usuarios: guarda la información de los usuarios del sistema.
 recetas: contiene los datos de cada receta publicada.
 
 ## Aclaración
-Dejamos aclarado que por una pequeña confusión según el excel la alumna (B) realizó la parte (A) y viceversa
+Dejamos aclarado que por una pequeña confusión la alumna (B) realizó la parte (A) y viceversa
 
 ## Diagrama Entidad-Relación (DER)
 ![DER-Saganea-Ribas](DER-Saganea-Ribas.png)
