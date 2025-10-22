@@ -2,18 +2,21 @@
 require_once './models/modelUsers.php';
 require_once './views/viewUsers.php';
 require_once './models/modelRecipes.php';
+require_once './middlewares/helperAuth.php';
 
 
 class controllerUsers {
     private $model;
     private $view;
     private $modelRecipe;
+    private $authHelper;
 
 
     public function __construct() {
       $this->model = new modelUsers();
       $this->modelRecipe = new modelRecipes();
       $this->view = new viewUsers();
+      $this->authHelper = new helperAuth();
     }
 
     // Mostrar todos los usuarios

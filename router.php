@@ -2,6 +2,8 @@
 require_once './controllers/controllerRecipes.php';
 require_once './controllers/controllerUsers.php';
 require_once './controllers/controllerAuth.php';
+require_once './middlewares/helperAuth.php';
+require_once './libs/response.php';
 
 
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
@@ -11,6 +13,10 @@ $action = 'home';
 if (!empty($_GET['action'])) {
     $action = $_GET['action'];
 }
+
+$authHelper = new helperAuth();
+$res = new Response();
+
 
 $params = explode('/', $action);
 switch ($params[0]) {
@@ -65,18 +71,21 @@ switch ($params[0]) {
         break;
 
     case "deleteUser":
+        $authHelper->verifySession($res);
         $controller = new controllerUsers();
         $controller->deleteUser($params[1]);
         break;
 
     // Mostrar formulario para editar
     case "editUser":
+      $authHelper->verifySession($res);
       $controller = new controllerUsers();
       $controller->editUserForm($params[1]);
       break;
     
     // Guardar cambios de usuario 
     case "updateUser":
+        $authHelper->verifySession($res);
         $controller = new controllerUsers();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $controller->updateUser($params[1]);
@@ -86,11 +95,13 @@ switch ($params[0]) {
         break;
     
     case "createUser":
+        $authHelper->verifySession($res);
         $controller = new controllerUsers();
         $controller->createUser();
         break;
 
     case "addUser":
+        $authHelper->verifySession($res);
         $controller = new controllerUsers();
         $controller->addUserForm();
         break;
@@ -98,6 +109,11 @@ switch ($params[0]) {
     case "showlogIn":
         $controller = new controllerAuth();
         $controller->showLogIn();
+        break;
+
+    case 'logIn':
+        $controller = new controllerAuth();
+        $controller->logIn();
         break;
 
     case "logOut":
@@ -108,4 +124,4 @@ switch ($params[0]) {
     default: 
         $controller = new controllerAuth();
         $controller->showError();
-        }
+    }
