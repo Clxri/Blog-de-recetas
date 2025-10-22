@@ -46,11 +46,12 @@ Público general:
 
 Ver el listado de todas las recetas disponibles.
 Consultar los detalles de cada usuario y sus recetas.
+Añadir tanto usuarios como recetas a usuarios
 
 Administrador:
 
-Agregar, editar o eliminar recetas.
-Agregar, editar o eliminar usuarios.
+Editar o eliminar recetas.
+Editar o eliminar usuarios.
 Iniciar y cerrar sesión.
 Protección de rutas para evitar el acceso sin autenticación.
 
@@ -58,6 +59,9 @@ Protección de rutas para evitar el acceso sin autenticación.
 
 usuarios: guarda la información de los usuarios del sistema.
 recetas: contiene los datos de cada receta publicada.
+
+## Aclaración
+Dejamos aclarado que por una pequeña confusión según el excel la alumna (B) realizó la parte (A) y viceversa
 
 ## Diagrama Entidad-Relación (DER)
 ![DER-Saganea-Ribas](DER-Saganea-Ribas.png)
