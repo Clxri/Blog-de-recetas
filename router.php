@@ -71,21 +71,16 @@ switch ($params[0]) {
         break;
 
     case "deleteUser":
-        $authHelper->verifySession($res);
         $controller = new controllerUsers();
         $controller->deleteUser($params[1]);
         break;
 
-    // Mostrar formulario para editar
     case "editUser":
-      $authHelper->verifySession($res);
       $controller = new controllerUsers();
       $controller->editUserForm($params[1]);
       break;
-    
-    // Guardar cambios de usuario 
+     
     case "updateUser":
-        $authHelper->verifySession($res);
         $controller = new controllerUsers();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $controller->updateUser($params[1]);
@@ -95,17 +90,16 @@ switch ($params[0]) {
         break;
     
     case "createUser":
-        $authHelper->verifySession($res);
         $controller = new controllerUsers();
         $controller->createUser();
         break;
 
     case "addUser":
-        $authHelper->verifySession($res);
         $controller = new controllerUsers();
         $controller->addUserForm();
         break;
     
+    //            inicio y cierre sesión
     case "showlogIn":
         $controller = new controllerAuth();
         $controller->showLogIn();
@@ -120,7 +114,7 @@ switch ($params[0]) {
        $controller = new controllerAuth();
        $controller->logOut();
        break;
-
+        
     default: 
         $controller = new controllerAuth();
         $controller->showError();

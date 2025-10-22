@@ -10,7 +10,7 @@ function verifySession($res){
             $res->user->username = $_SESSION['USERNAME'];
             return;
         } else {
-            header('Location: ' . BASE_URL . 'showLogin'); //sino redirije log in 
+            header('Location: ' . BASE_URL . 'showLogIn'); //sino redirije log in 
         }
     }
 

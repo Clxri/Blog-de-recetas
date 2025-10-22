@@ -55,12 +55,24 @@ class controllerUsers {
             $description = $_POST['description'] ?? '';
             $age = $_POST['age'];
 
+        if ($this->isEmailUsed($email)) {
+            $error = "El email ya está registrado.";
+            return $this->view->addUserForm(null, $error);
+        }
+
             $this->model->createUser($name, $email, $description, $age);
             header("Location: " . BASE_URL . "showUsers");
         } else {
             $error = "Faltan completar datos del usuario.";
             $this->view->addUserForm(null, $error);
         }
+    }
+
+    // chequeo mail
+
+    public function isEmailUsed($email, $id_user = null){
+        $existingEmail = $this->model->getClientByEmail($email);
+        return $existingEmail  && (!$id_user || $existingEmail->id_user != $id_user); 
     }
 
     // Eliminar un usuario

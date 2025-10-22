@@ -46,6 +46,11 @@ class modelUsers{
     return $query->fetchAll(PDO::FETCH_COLUMN); // solo los IDs
    }
 
+   public function getClientByEmail($email) {
+        $query = $this->db->prepare('SELECT * FROM users WHERE email = ?');
+        $query->execute([$email]);
+        return $query->fetch(PDO::FETCH_OBJ); // devuelve el cliente si existe, o false si no
+    }
 
 
 }

@@ -26,8 +26,10 @@
 
       <div class="card-footer d-flex justify-content-between">
         <a href="<?= BASE_URL ?>showRecipes" class="btn btn-secondary">Volver al listado</a>
+        <?php if (isset($_SESSION['IS_LOGGED']) && $_SESSION['IS_LOGGED']): ?>
         <a href="<?= BASE_URL ?>updateRecipe/<?= $recipe->id_recipe ?>" class="btn btn-warning">Editar</a>
         <a href="<?= BASE_URL ?>deleteRecipe/<?= $recipe->id_recipe ?>" class="btn btn-danger">Eliminar</a>
+        <?php endif ?>
       </div>
     </div>
   <?php else: ?>

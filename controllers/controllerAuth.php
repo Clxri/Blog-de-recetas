@@ -36,15 +36,14 @@ class controllerAuth{
         }
 
         // 
-        if ($password === $userDb->password) {
+        if (password_verify($password, $userDb->password)) {
          session_start();
          $_SESSION['ID_USER'] = $userDb->id;
          $_SESSION['USERNAME'] = $userDb->username;
          $_SESSION['IS_LOGGED'] = true;
 
          header("Location: " . BASE_URL . "showUsers");
-         exit(); // Esto asegura que no se siga ejecutando código
-        } else {
+         } else {
          return $this->view->showLogIn('Contraseña incorrecta..');
         }    
     }
@@ -56,9 +55,9 @@ class controllerAuth{
     
 
 
-   // public function showLogOut() {
-   //     session_start();
-   //     session_destroy();
-   //     header("Location: " . BASE_URL. 'home');
-   // }
+    public function logOut() {
+         session_start();
+         session_destroy();
+        header("Location: " . BASE_URL. 'home');
+   }
 }

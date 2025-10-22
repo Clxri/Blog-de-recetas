@@ -37,7 +37,7 @@
         <!----boton de salir--->
           <div class="navbar-nav ms-auto "> 
             <?php if (isset($_SESSION['IS_LOGGED']) && $_SESSION['IS_LOGGED']): ?>
-             <a class="nav-link" href="./logOut">Log out</a>  
+             <a class="nav-link" href="<?= BASE_URL ?>./logOut">Log out</a>  
             <?php endif ?>
           </div>
       </div>

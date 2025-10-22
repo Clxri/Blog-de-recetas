@@ -14,7 +14,7 @@ class authModel {
 
     // Buscar usuario por username
    public function getUserByUsername($username) {
-     $query = $this->db->prepare('SELECT * FROM admin WHERE username = ?');
+     $query = $this->db->prepare('SELECT * FROM `admin` WHERE username = ?');
      $query->execute([$username]);
      $user = $query->fetch(PDO::FETCH_OBJ);
      return $user;
